@@ -7,3 +7,4 @@ back/data/backups/*.json
 .DS_Store
 .vscode/
 .idea/
+docs/
