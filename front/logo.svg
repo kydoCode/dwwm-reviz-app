@@ -1,0 +1,48 @@
+<svg width="400" height="140" viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes glowPulse {
+      0% { filter: drop-shadow(0 0 4px #007BFF) drop-shadow(0 0 10px #00A8FF); }
+      50% { filter: drop-shadow(0 0 12px #00A8FF) drop-shadow(0 0 20px #007BFF); }
+      100% { filter: drop-shadow(0 0 4px #007BFF) drop-shadow(0 0 10px #00A8FF); }
+    }
+
+    svg:hover #neonGroup {
+      animation: glowPulse 2s ease-in-out infinite;
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00A8FF"/>
+      <stop offset="100%" stop-color="#007BFF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Groupe principal (cube + texte) -->
+  <g id="neonGroup" transform="translate(30,25)">
+
+    <!-- Cube -->
+    <g>
+      <path d="M30 0 L60 17 L60 51 L30 68 L0 51 L0 17 Z" 
+            fill="none" 
+            stroke="url(#blueGradient)" 
+            stroke-width="4"/>
+      <path d="M30 0 L30 34 L60 51" 
+            fill="none" 
+            stroke="url(#blueGradient)" 
+            stroke-width="4"/>
+      <path d="M30 34 L0 51" 
+            fill="none" 
+            stroke="url(#blueGradient)" 
+            stroke-width="4"/>
+    </g>
+
+    <!-- Texte -->
+    <text x="80" y="50" 
+          font-family="Orbitron, Rajdhani, sans-serif" 
+          font-size="32" 
+          fill="white">
+      DWWM ReviZ
+    </text>
+  </g>
+</svg>

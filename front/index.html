@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWWM ReviZ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">DWWM ReviZ</div>
+    </div>
+    <header class="glass-header">
+        <div class="container-fluid d-flex justify-content-between align-items-center py-3">
+            <a href="index.html" class="logo-link">
+                <img src="logo.svg" alt="DWWM ReviZ" class="app-logo">
+            </a>
+            <div class="timer-wrapper">
+                <div id="timer" class="timer">00:00</div>
+            </div>
+            <div class="header-actions">
+                <span class="user-info me-3"></span>
+                <button id="adminBtn" class="btn-admin me-2">Admin</button>
+                <button id="logoutBtn" class="btn btn-danger">Déconnexion</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <section class="tirage-section glass-card mb-4">
+            <div class="row g-2 mb-3">
+                <div class="col-6 col-md-3">
+                    <label for="nbEtudiants" class="form-label">Nb étudiants</label>
+                    <input type="number" id="nbEtudiants" class="form-control" value="1" min="1">
+                </div>
+                <div class="col-6 col-md-3">
+                    <label for="timerDuration" class="form-label">Durée (min)</label>
+                    <input type="number" id="timerDuration" class="form-control" value="30" min="1">
+                </div>
+                <div class="col-6 col-md-3">
+                    <label for="niveauFilter" class="form-label">Niveau</label>
+                    <select id="niveauFilter" class="form-select">
+                        <option value="tous">Tous</option>
+                        <option value="1">Niveau 1</option>
+                        <option value="2">Niveau 2</option>
+                        <option value="3">Niveau 3</option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-3">
+                    <label class="form-label">Questions</label>
+                    <div id="questionCounter" class="question-counter">0 / 0</div>
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="col-12">
+                    <div class="d-flex flex-wrap gap-2 justify-content-center">
+                        <button id="startTimer" class="btn btn-primary btn-action">Démarrer</button>
+                        <button id="resetTimer" class="btn btn-secondary btn-action">Reset Timer</button>
+                        <button id="resetQuestions" class="btn btn-secondary btn-action">Reset Questions</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dice-section text-center">
+            <div id="dice3D" class="dice-3d">
+                <div class="dice-face">🎲</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-3">
+        <a href="index.html" class="logo-link d-block">
+            <img src="logo.svg" alt="DWWM ReviZ" class="footer-logo mb-2 mx-auto">
+        </a>
+        <p class="mb-0">&copy; <span id="currentYear"></span> by Kydo</p>
+    </footer>
+    <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+
+    <div id="questionModal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close">&times;</span>
+            <div class="modal-header-custom">
+                <h2>Question n°<span id="questionNumber"></span></h2>
+                <div class="timer-controls">
+                    <div id="modalTimer" class="timer">00:00</div>
+                    <button id="pauseTimer" class="btn-icon">⏸</button>
+                    <button id="resetModalTimer" class="btn-icon">↻</button>
+                </div>
+            </div>
+            <div class="modal-body-custom">
+                <p><strong>Étudiant n°</strong> <span id="studentNumber"></span></p>
+                <p><strong>Compétence:</strong> <span id="competence"></span></p>
+                <p><strong>Niveau:</strong> <span id="niveau"></span></p>
+                <div class="question-section">
+                    <p id="questionText"></p>
+                </div>
+                <div id="optionsSection" class="options-section"></div>
+                <div id="answerSection" class="answer-section" style="display:none;">
+                    <p id="answerText"></p>
+                </div>
+            </div>
+            <div class="modal-footer-custom">
+                <button id="showAnswer" class="btn btn-primary">Afficher la réponse</button>
+                <button id="validateNext" class="btn btn-success">Valider et passer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api-config.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 800);
+        });
+    </script>
+    <script src="js/app.js"></script>
+</body>
+</html>

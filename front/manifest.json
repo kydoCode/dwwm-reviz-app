@@ -1,0 +1,16 @@
+{
+  "name": "DWWM ReviZ",
+  "short_name": "DWWM ReviZ",
+  "description": "Application de révision pour le titre professionnel Développeur Web et Web Mobile",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#007BFF",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

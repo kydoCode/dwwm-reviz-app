@@ -1,0 +1,375 @@
+{
+  "questions": [
+    {
+      "id": "Q001",
+      "competence": "CP1",
+      "niveau": 1,
+      "question": "Qu'est-ce qu'un environnement de développement intégré (IDE) et quels sont ses principaux composants ?",
+      "reponse": "Un IDE est un logiciel qui regroupe des outils pour faciliter le développement : éditeur de code avec coloration syntaxique, débogueur, compilateur/interpréteur, gestionnaire de versions intégré, terminal, et extensions. Exemples : VS Code, PHPStorm, Android Studio, IntelliJ, Atom..."
+    },
+    {
+      "id": "Q002",
+      "competence": "CP1",
+      "niveau": 3,
+      "question": "Comment configureriez-vous un environnement de développement pour un projet React avec TypeScript en utilisant npm, incluant ESLint et Prettier ?",
+      "reponse": "1) Installer Node.js et npm (assurez-vous d'avoir une version compatible avec React). 2) Créer le projet React avec TypeScript : `npm create-react-app my-app --template typescript` ou `npx create-react-app my-app --template typescript`. 3) Installer ESLint et Prettier ainsi que les plugins TypeScript : `npm install --save-dev eslint prettier eslint-config-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react`. 4) Configurer `.eslintrc.json` pour étendre les règles recommandées pour React et TypeScript et inclure Prettier :\n```\n{\n  \"parser\": \"@typescript-eslint/parser\",\n  \"extends\": [\"eslint:recommended\", \"plugin:react/recommended\", \"plugin:@typescript-eslint/recommended\", \"prettier\"],\n  \"plugins\": [\"react\", \"@typescript-eslint\"],\n  \"settings\": {\"react\": {\"version\": \"detect\"}}\n}\n```\n5) Configurer `.prettierrc` pour définir vos préférences de formatage. 6) Ajouter des scripts utiles dans `package.json` :\n```\n\"scripts\": {\n  \"lint\": \"eslint 'src/**/*.{js,ts,tsx}'\",\n  \"format\": \"prettier --write 'src/**/*.{js,ts,tsx,css,md}'\"\n}\n```\n7) Configurer votre IDE (ex : VSCode) pour utiliser automatiquement ESLint et Prettier afin d'assurer la cohérence du code."
+    },
+    {
+      "id": "Q003",
+      "competence": "CP1",
+      "niveau": 2,
+      "question": "Mettre en place un environnement complet (Node, React, DB) avec dépendances et variables d’environnement.",
+      "reponse": "1) Installer Node.js et npm. 2) Créer le projet React avec create-react-app ou Vite. 3) Installer les dépendances nécessaires (express, axios, react-router, etc.). 4) Configurer la base de données (MySQL/PostgreSQL/MongoDB) et les scripts de migration. 5) Définir les variables d'environnement dans .env pour dev, test et prod. 6) Mettre en place des scripts de démarrage pour front et back."
+    },
+    {
+      "id": "Q004",
+      "competence": "CP1",
+      "niveau": 1,
+      "question": "Qu'est-ce que Git et à quoi sert-il dans le développement web ?",
+      "reponse": "Git est un système de gestion de versions distribué qui permet de suivre l'historique des modifications du code, de collaborer en équipe, de créer des branches pour développer des fonctionnalités isolément, et de fusionner les modifications. Il facilite le travail collaboratif et la traçabilité du code."
+    },
+    {
+      "id": "Q005",
+      "competence": "CP1",
+      "niveau": 2,
+      "question": "Expliquez un workflow Git simple et comment l'appliquer dans un projet d'équipe.",
+      "reponse": "Un workflow Git simple pour un projet d'équipe peut utiliser deux branches principales : 'main' pour la version stable et 'develop' pour l'intégration. Workflow : 1) Créer une branche feature depuis develop pour chaque nouvelle fonctionnalité. 2) Développer et commiter régulièrement dans la branche feature. 3) Ouvrir une pull request pour merger la feature dans develop après validation. 4) Une fois testé, merger develop dans main pour la mise en production. 5) Tagger la version si nécessaire."
+    },
+    {
+      "id": "Q006",
+      "competence": "CP2",
+      "niveau": 3,
+      "question": "Expliquer comment faire communiquer React et Node.js (ports, CORS, requêtes, scripts).",
+      "reponse": "1) Lancer le serveur Node.js sur un port (ex: 3000) et le front React sur un autre (ex: 5173). 2) Dans React, appeler directement les endpoints du back via axios ou fetch (ex: http://localhost:5000/api/...). 3) Gérer le CORS côté serveur avec le middleware cors pour autoriser les requêtes depuis le front et le client (tests API). 4) Mettre en place des scripts npm pour démarrer front et back simultanément si nécessaire (ex: avec concurrently). 5) Tester les requêtes pour vérifier que le front et le back communiquent correctement."
+    },
+    {
+      "id": "Q007",
+      "competence": "CP1",
+      "niveau": 1,
+      "question": "Qu'est-ce qu'un environnement d'exécution et quelle est la différence avec une machine virtuelle ?",
+      "reponse": "Un environnement d'exécution permet de lancer une application avec toutes ses dépendances nécessaires sur l'ordinateur. Contrairement à une machine virtuelle complète, il utilise directement le système existant, démarre plus vite et consomme moins de ressources, mais offre moins d'isolation."
+    },
+    {
+      "id": "Q008",
+      "competence": "CP2",
+      "niveau": 1,
+      "question": "Qu'est-ce qu'une maquette (wireframe) et quelle est sa différence avec un mockup ?",
+      "reponse": "Un wireframe est une représentation schématique basse fidélité de l'interface, montrant la structure et l'organisation des éléments sans détails visuels (noir et blanc, formes simples). Un mockup est une maquette haute fidélité avec les couleurs, typographies, images réelles, proche du rendu final. Le wireframe se concentre sur l'UX, le mockup sur l'UI."
+    },
+    {
+      "id": "Q009",
+      "competence": "CP2",
+      "niveau": 2,
+      "question": "Comment créeriez-vous les maquettes d'une application e-commerce responsive (desktop, tablette, mobile) avec Figma ?",
+      "reponse": "1) Définir la grille et les breakpoints (desktop 1440px, tablette 768px, mobile 375px). 2) Créer les composants réutilisables (boutons, cards, navigation). 3) Utiliser Auto Layout pour la responsivité. 4) Créer les frames pour chaque écran et device. 5) Appliquer la charte graphique (couleurs, typographies). 6) Ajouter les interactions et transitions. 7) Créer un prototype cliquable. 8) Partager avec l'équipe pour feedback."
+    },
+    {
+      "id": "Q010",
+      "competence": "CP2",
+      "niveau": 3,
+      "question": "Un client vous demande de concevoir l'interface d'une plateforme de gestion pour des utilisateurs malvoyants. Quelle démarche de maquettage adopteriez-vous pour respecter le RGAA ?",
+      "reponse": "1) Analyser les critères RGAA niveau AA minimum. 2) Utiliser des contrastes élevés (ratio 4.5:1 minimum). 3) Prévoir des tailles de texte ajustables (rem, pas px). 4) Structurer avec des landmarks HTML5. 5) Ajouter des labels explicites pour tous les champs. 6) Prévoir des alternatives textuelles pour les images. 7) Concevoir une navigation au clavier complète. 8) Tester avec un lecteur d'écran (NVDA, JAWS). 9) Documenter les zones interactives et leur ordre de tabulation. 10) Valider avec des utilisateurs en situation de handicap."
+    },
+    {
+      "id": "Q011",
+      "competence": "CP2",
+      "niveau": 1,
+      "question": "Qu'est-ce que le RGAA et pourquoi est-il important ?",
+      "reponse": "Le RGAA (Référentiel Général d'Amélioration de l'Accessibilité) est le référentiel français d'accessibilité numérique basé sur les WCAG. Il définit les critères pour rendre les sites web accessibles aux personnes en situation de handicap. Il est obligatoire pour les services publics et important pour l'inclusion numérique et le SEO."
+    },
+    {
+      "id": "Q012",
+      "competence": "CP2",
+      "niveau": 2,
+      "question": "Comment modéliseriez-vous l'enchaînement des écrans d'un parcours utilisateur d'inscription avec validation email ?",
+      "reponse": "Utiliser un diagramme de flux (flowchart) : 1) Écran d'accueil → bouton 'S'inscrire'. 2) Formulaire d'inscription (nom, email, mot de passe). 3) Validation côté client → si erreur, retour au formulaire avec messages. 4) Envoi au serveur → si erreur (email existant), message d'erreur. 5) Si succès, écran 'Email envoyé'. 6) Utilisateur clique sur lien dans email. 7) Écran de confirmation. 8) Redirection vers tableau de bord. Ajouter les cas d'erreur (lien expiré, email non reçu)."
+    },
+    {
+      "id": "Q013",
+      "competence": "CP3",
+      "niveau": 1,
+      "question": "Qu'est-ce que le HTML sémantique et pourquoi est-il important ?",
+      "reponse": "Le HTML sémantique utilise des balises qui décrivent le sens du contenu (header, nav, main, article, section, aside, footer) plutôt que des div génériques. Avantages : meilleure accessibilité (lecteurs d'écran), meilleur SEO (compréhension par les moteurs de recherche), code plus lisible et maintenable, structure claire du document."
+    },
+    {
+      "id": "Q014",
+      "competence": "CP3",
+      "niveau": 2,
+      "question": "Comment créer un menu responsive type hamburger en CSS moderne et accessible, sans dépendance à un framework ?",
+      "reponse": "1) Utiliser HTML sémantique pour la navigation (<nav>, <ul>, <li>, <a>). 2) Cacher/afficher le menu via media queries (desktop vs mobile). 3) Styliser le hamburger avec CSS (flexbox, pseudo-éléments). 4) Utiliser transitions CSS pour l’animation. 5) Pour un contrôle de l’état ouvert/fermé sans JavaScript, le checkbox hack reste possible mais on peut aussi prévoir un simple script JS léger pour l’accessibilité et l’interaction clavier. 6) Vérifier que le menu est navigable au clavier et lisible par lecteurs d’écran."
+    },
+    {
+      "id": "Q015",
+      "competence": "CP3",
+      "niveau": 3,
+      "question": "Vous devez intégrer une page d'accueil complexe avec plusieurs sections, animations au scroll, et performance optimale. Quelle stratégie d'intégration adopteriez-vous ?",
+      "reponse": "1) HTML sémantique avec sections clairement identifiées. 2) CSS Mobile-first, utiliser CSS Grid/Flexbox pour les layouts complexes, variables CSS pour cohérence et thèmes. 3) Optimisation des images : formats modernes (WebP, AVIF), lazy loading natif, srcset pour responsive images. 4) Animations : Intersection Observer pour déclenchement au scroll, CSS animations/transitions accélérées GPU, éviter reflows et layout thrashing. 5) Performance : Critical CSS inline, defer/async pour les scripts JS, minification, réduire les CLS et FID. 6) Accessibilité : prefers-reduced-motion pour désactiver animations, vérifier contrastes et navigation clavier. 7) Tests et validation : Lighthouse, PageSpeed Insights, Chrome DevTools Performance, validation W3C et axe DevTools."
+    },
+    {
+      "id": "Q016",
+      "competence": "CP3",
+      "niveau": 1,
+      "question": "Qu'est-ce que le responsive design et quels sont les principaux breakpoints ?",
+      "reponse": "Le responsive design est une approche qui permet à un site web de s'adapter automatiquement à la taille de l'écran. Breakpoints courants : mobile (< 576px), tablette portrait (576-768px), tablette paysage (768-992px), desktop (992-1200px), large desktop (> 1200px). On utilise les media queries CSS pour appliquer des styles différents selon la largeur."
+    },
+    {
+      "id": "Q017",
+      "competence": "CP3",
+      "niveau": 2,
+      "question": "Comment optimiseriez-vous le référencement naturel (SEO) d'une page web statique ?",
+      "reponse": "1) Balises meta : title unique et descriptif (< 60 car), meta description (< 160 car). 2) Structure : balises H1-H6 hiérarchisées, un seul H1. 3) Contenu : mots-clés pertinents, texte de qualité (> 300 mots). 4) Images : attributs alt descriptifs, noms de fichiers explicites, formats optimisés. 5) URLs : propres et descriptives. 6) Liens internes cohérents. 7) Schema.org pour les données structurées. 8) Performance : temps de chargement < 3s. 9) Mobile-friendly. 10) Sitemap.xml et robots.txt."
+    },
+    {
+      "id": "Q018",
+      "competence": "CP4",
+      "niveau": 1,
+      "question": "Qu'est-ce que le DOM (Document Object Model) et comment JavaScript interagit-il avec lui ?",
+      "reponse": "Le DOM est une représentation en arbre de la structure HTML d'une page web. JavaScript peut interagir avec le DOM via des méthodes comme document.querySelector(), getElementById(), createElement(), appendChild(), addEventListener(). Cela permet de manipuler dynamiquement le contenu, la structure et le style de la page sans recharger."
+    },
+    {
+      "id": "Q019",
+      "competence": "CP4",
+      "niveau": 2,
+      "question": "Comment implémenteriez-vous un système de validation de formulaire côté client avec feedback en temps réel ?",
+      "reponse": "1) Écouter les événements 'input' et 'blur' sur chaque champ. 2) Créer des fonctions de validation (email regex, longueur min/max, champs requis). 3) Afficher les messages d'erreur sous chaque champ invalide. 4) Ajouter des classes CSS pour le feedback visuel (border rouge/vert). 5) Désactiver le bouton submit si le formulaire est invalide. 6) Utiliser l'API Constraint Validation (setCustomValidity). 7) Prévenir la soumission avec preventDefault() si invalide. 8) Toujours valider côté serveur également."
+    },
+    {
+      "id": "Q020",
+      "competence": "CP3",
+      "niveau": 1,
+      "question": "Décrire l’architecture d’une SPA React (composants, hooks, routing, context).",
+      "reponse": "1) Structurer l’application en composants fonctionnels réutilisables. 2) Utiliser les hooks (useState, useEffect, useContext, etc.) pour gérer le state et les effets. 3) Mettre en place react-router-dom pour le routage et la navigation entre pages. 4) Utiliser le Context API ou Redux pour gérer l’état global si nécessaire. 5) Organiser les dossiers par feature ou par type (components, pages, services, utils)."
+    },
+    {
+      "id": "Q021",
+      "competence": "CP4",
+      "niveau": 1,
+      "question": "Qu'est-ce qu'une API REST et comment consommer ses données en JavaScript ?",
+      "reponse": "Une API REST (Representational State Transfer) est une interface qui permet d'échanger des données via HTTP avec des méthodes (GET, POST, PUT, DELETE). En JavaScript, on utilise fetch() : fetch('https://api.example.com/users').then(response => response.json()).then(data => console.log(data)). On peut aussi utiliser async/await pour une syntaxe plus lisible."
+    },
+    {
+      "id": "Q022",
+      "competence": "CP4",
+      "niveau": 2,
+      "question": "Comment géreriez-vous les erreurs et les états de chargement lors d'appels API asynchrones ?",
+      "reponse": "1) Utiliser try/catch avec async/await. 2) Créer des états : loading, error, data. 3) Afficher un loader pendant loading. 4) Gérer les erreurs réseau (catch) et HTTP (response.ok). 5) Afficher des messages d'erreur utilisateur-friendly. 6) Implémenter un système de retry pour les erreurs temporaires. 7) Logger les erreurs pour le debugging. 8) Utiliser des codes d'erreur HTTP appropriés. Exemple : try { setLoading(true); const data = await fetchData(); setData(data); } catch(error) { setError(error.message); } finally { setLoading(false); }"
+    },
+    {
+      "id": "Q023",
+      "competence": "CP4",
+      "niveau": 3,
+      "question": "Expliquer comment stocker des données côté client (localStorage/sessionStorage) pour améliorer les performances.",
+      "reponse": "1) Identifier les données à stocker côté client (préférences utilisateur, tokens, cache temporaire). 2) Utiliser localStorage pour stocker des données persistantes et sessionStorage pour des données temporaires. 3) Créer des fonctions utilitaires pour lire/écrire les données. 4) Mettre en place un mécanisme de synchronisation ou d’expiration si nécessaire. 5) Nettoyer les données sensibles ou périmées pour éviter des problèmes de sécurité ou de performances."
+    },
+    {
+      "id": "Q024",
+      "competence": "CP5",
+      "niveau": 1,
+      "question": "Qu'est-ce qu'une base de données relationnelle et quels sont ses principaux concepts ?",
+      "reponse": "Une base de données relationnelle organise les données en tables (relations) avec des lignes (tuples) et des colonnes (attributs). Concepts clés : clé primaire (identifiant unique), clé étrangère (référence à une autre table), relations (1-1, 1-N, N-N), contraintes d'intégrité, normalisation. Exemples : MySQL, PostgreSQL, SQL Server."
+    },
+    {
+      "id": "Q025",
+      "competence": "CP5",
+      "niveau": 2,
+      "question": "Comment concevriez-vous le schéma de base de données pour un système de blog avec utilisateurs, articles, catégories et commentaires ?",
+      "reponse": "Tables : 1) users (id PK, username, email UNIQUE, password_hash, created_at). 2) categories (id PK, name, slug UNIQUE). 3) articles (id PK, user_id FK, title, slug UNIQUE, content, published_at, created_at, updated_at). 4) comments (id PK, article_id FK, user_id FK, content, created_at). 5) article_categories (article_id FK, category_id FK, PK composite) pour relation N-N. Index sur : user_id, article_id, slug, published_at. Contraintes : ON DELETE CASCADE pour comments, NOT NULL sur champs obligatoires."
+    },
+    {
+      "id": "Q026",
+      "competence": "CP5",
+      "niveau": 3,
+      "question": "Vous devez concevoir une base de données pour une plateforme e-commerce avec gestion des stocks multi-entrepôts, historique des prix, et système de promotions. Quelle architecture proposeriez-vous ?",
+      "reponse": "Tables principales : 1) products (id, name, description, base_price, created_at). 2) warehouses (id, name, location). 3) inventory (product_id FK, warehouse_id FK, quantity, reserved_quantity, PK composite). 4) price_history (id, product_id FK, price, valid_from, valid_to). 5) promotions (id, code, discount_type, discount_value, start_date, end_date). 6) product_promotions (product_id FK, promotion_id FK). 7) orders (id, user_id FK, status, total, created_at). 8) order_items (id, order_id FK, product_id FK, quantity, unit_price, warehouse_id FK). Stratégies : trigger pour price_history, procédure stockée pour réservation stock, vue matérialisée pour prix actuels, partitionnement de order_items par date, index sur dates et foreign keys."
+    },
+    {
+      "id": "Q027",
+      "competence": "CP5",
+      "niveau": 1,
+      "question": "Qu'est-ce que la normalisation d'une base de données et pourquoi est-elle importante ?",
+      "reponse": "La normalisation consiste à organiser les données pour réduire les doublons et améliorer la cohérence. Elle permet d'éviter les erreurs lors de l'insertion, modification ou suppression des données et facilite la maintenance. En contrepartie, elle peut entraîner l'utilisation de plus de jointures lors des requêtes."
+    },
+    {
+      "id": "Q028",
+      "competence": "CP5",
+      "niveau": 2,
+      "question": "Comment mettriez-vous en place une stratégie de sauvegarde et de restauration pour une base de données PostgreSQL en production ?",
+      "reponse": "1) Effectuer régulièrement des sauvegardes complètes de la base de données. 2) Stocker les sauvegardes à plusieurs endroits (local et distant) pour sécuriser les données. 3) Automatiser les sauvegardes avec des scripts ou tâches planifiées. 4) Tester régulièrement la restauration sur un environnement de test pour s'assurer que les données peuvent être récupérées correctement. 5) Documenter la procédure de restauration pour que l'équipe puisse l'exécuter facilement en cas de problème."
+    },
+    {
+      "id": "Q029",
+      "competence": "CP6",
+      "niveau": 1,
+      "question": "Qu'est-ce que SQL et quelles sont les principales catégories de commandes ?",
+      "reponse": "SQL (Structured Query Language) est le langage standard pour interagir avec les bases de données relationnelles. Catégories : 1) DDL (Data Definition Language) : CREATE, ALTER, DROP pour la structure. 2) DML (Data Manipulation Language) : SELECT, INSERT, UPDATE, DELETE pour les données. 3) DCL (Data Control Language) : GRANT, REVOKE pour les permissions. 4) TCL (Transaction Control Language) : COMMIT, ROLLBACK, SAVEPOINT."
+    },
+    {
+      "id": "Q030",
+      "competence": "CP6",
+      "niveau": 2,
+      "question": "Comment implémenteriez-vous une fonction de recherche avec pagination et filtres simples en SQL ?",
+      "reponse": "1) Utiliser SELECT avec WHERE pour filtrer les résultats selon les critères (ex: nom, catégorie, prix). 2) Trier les résultats avec ORDER BY. 3) Limiter le nombre de résultats par page avec LIMIT et OFFSET pour la pagination. 4) Indexer les colonnes fréquemment filtrées pour améliorer les performances. 5) Préparer la requête pour éviter les injections SQL."
+    },
+    {
+      "id": "Q031",
+      "competence": "CP6",
+      "niveau": 3,
+      "question": "Comment géreriez-vous les problèmes de concurrence lors de la réservation de stock dans une application e-commerce ?",
+      "reponse": "Pour éviter que plusieurs utilisateurs réservent le même produit en même temps : 1) Vérifier la quantité disponible avant de confirmer la commande. 2) Effectuer la réservation dans une transaction pour que la mise à jour du stock soit atomique. 3) Bloquer temporairement le stock pendant que la commande est traitée. 4) Tester le processus pour s'assurer que deux utilisateurs ne peuvent pas réserver la même unité simultanément."
+    },
+    {
+      "id": "Q032",
+      "competence": "CP6",
+      "niveau": 1,
+      "question": "Qu'est-ce qu'une injection SQL et comment s'en protéger ?",
+      "reponse": "L'injection SQL est une attaque où un utilisateur malveillant insère du code SQL dans les entrées pour manipuler la base de données. Protection : 1) Utiliser des requêtes préparées (prepared statements) avec paramètres bindés. 2) Valider et échapper les entrées utilisateur. 3) Principe du moindre privilège pour les comptes DB. 4) Ne jamais afficher les erreurs SQL en production. 5) ORM qui gère automatiquement l'échappement. Exemple vulnérable : SELECT * FROM users WHERE username = '$username' (peut être exploité avec ' OR '1'='1)."
+    },
+    {
+      "id": "Q033",
+      "competence": "CP6",
+      "niveau": 2,
+      "question": "Comment optimiseriez-vous une requête SQL lente qui joint plusieurs tables et filtre sur plusieurs colonnes ?",
+      "reponse": "1) Identifier les parties lentes avec EXPLAIN ou un outil d'analyse. 2) Ajouter des index sur les colonnes utilisées dans les filtres et les jointures. 3) Ne sélectionner que les colonnes nécessaires, éviter SELECT *. 4) Réécrire les requêtes ou simplifier les jointures si possible. 5) Vérifier que les index sont bien utilisés et qu'il n'y a pas de lecture complète inutile de la table."
+    },
+    {
+      "id": "Q034",
+      "competence": "CP7",
+      "niveau": 1,
+      "question": "Qu'est-ce que la programmation orientée objet (POO) et quels sont ses quatre piliers ?",
+      "reponse": "La POO est un paradigme de programmation basé sur les objets qui encapsulent données et comportements. Les 4 piliers : 1) Encapsulation : regrouper données et méthodes, cacher les détails internes. 2) Abstraction : simplifier la complexité en exposant l'essentiel. 3) Héritage : réutiliser le code en créant des classes dérivées. 4) Polymorphisme : même interface, comportements différents selon le type."
+    },
+    {
+      "id": "Q035",
+      "competence": "CP7",
+      "niveau": 2,
+      "question": "Comment implémenteriez-vous un système d'authentification JWT avec refresh tokens en Node.js ?",
+      "reponse": "1) Dépendances : jsonwebtoken, bcrypt. 2) Login : vérifier credentials, hasher password avec bcrypt.compare(). 3) Générer access token (15min) et refresh token (7j) avec jwt.sign(). 4) Stocker refresh token en DB avec user_id. 5) Retourner les deux tokens au client. 6) Middleware d'authentification : vérifier access token avec jwt.verify(), extraire user_id. 7) Route /refresh : vérifier refresh token, générer nouveau access token. 8) Logout : supprimer refresh token de la DB. 9) Sécurité : HTTPS, httpOnly cookies, rotation des refresh tokens, blacklist des tokens révoqués."
+    },
+    {
+      "id": "Q036",
+      "competence": "CP7",
+      "niveau": 3,
+      "question": "Vous devez concevoir une application de réservation avec plusieurs fonctionnalités (utilisateurs, réservations, paiements, notifications). Comment organiseriez-vous votre architecture ?",
+      "reponse": "Je structurerais le projet en plusieurs modules : un module 'utilisateurs' pour la gestion des comptes, un module 'réservations' pour les réservations, un module 'paiements' pour les transactions, et un module 'notifications' pour les emails ou messages. Chaque module aurait ses routes, ses contrôleurs et son modèle de données. Les modules communiqueraient entre eux via des API internes bien définies. Cette organisation facilite la maintenance et l’évolution du projet."
+    },
+    {
+      "id": "Q037",
+      "competence": "CP7",
+      "niveau": 1,
+      "question": "Qu'est-ce qu'une API REST et à quoi servent les principales méthodes HTTP ?",
+      "reponse": "Une API REST permet à une application de communiquer avec une autre via des requêtes HTTP. Elle s’appuie sur des ressources (par exemple /users ou /products) identifiées par des URL. Les méthodes HTTP ont chacune un rôle : GET pour lire des données, POST pour en créer, PUT ou PATCH pour les modifier, et DELETE pour les supprimer. Chaque requête est indépendante (stateless) et le format de réponse est souvent en JSON."
+    },
+    {
+      "id": "Q038",
+      "competence": "CP7",
+      "niveau": 2,
+      "question": "Comment structureriez-vous une API REST pour un système de gestion de tâches avec authentification et permissions ?",
+      "reponse": "Routes : POST /auth/login, POST /auth/register, POST /auth/refresh. GET /users/me, PATCH /users/me. GET /projects (liste), POST /projects (créer), GET /projects/:id, PATCH /projects/:id, DELETE /projects/:id. GET /projects/:id/tasks, POST /projects/:id/tasks, GET /tasks/:id, PATCH /tasks/:id, DELETE /tasks/:id. Structure : 1) Middleware auth pour vérifier JWT. 2) Middleware permissions (owner, member, admin). 3) Validation des entrées (Joi, express-validator). 4) Réponses standardisées : {success, data, error, message}. 5) Codes HTTP appropriés (200, 201, 400, 401, 403, 404, 500). 6) Pagination : ?page=1&limit=20. 7) Filtres : ?status=completed&priority=high. 8) Versioning : /api/v1/. 9) Rate limiting. 10) Documentation OpenAPI/Swagger."
+    },
+    {
+      "id": "Q039",
+      "competence": "CP8",
+      "niveau": 1,
+      "question": "Qu'est-ce que le déploiement continu (CD) et en quoi diffère-t-il de l'intégration continue (CI) ?",
+      "reponse": "CI (Continuous Integration) : automatiser les tests et la compilation à chaque commit pour détecter les erreurs rapidement. CD (Continuous Deployment) : automatiser le déploiement en production après validation des tests. CI/CD ensemble forment un pipeline : commit → build → tests → déploiement automatique. Avantages : livraisons fréquentes, feedback rapide, réduction des risques, moins d'erreurs humaines."
+    },
+    {
+      "id": "Q040",
+      "competence": "CP8",
+      "niveau": 2,
+      "question": "Comment automatiser les tests et le déploiement d'une application Node.js avec GitHub Actions ?",
+      "reponse": "On crée un fichier .github/workflows/main.yml pour définir les étapes. Le pipeline s’exécute à chaque push ou pull request. Étapes principales : 1) Installer Node.js et les dépendances avec npm install. 2) Lancer les tests (npm test). 3) Si tout est OK, construire le projet (npm run build). 4) Optionnel : déployer automatiquement sur un serveur ou une plateforme comme Vercel ou Render. Les variables sensibles sont stockées dans les secrets GitHub."
+    },
+    {
+      "id": "Q041",
+      "competence": "CP8",
+      "niveau": 3,
+      "question": "Comment déployer une application web sans interruption de service (zero-downtime) tout en gérant les mises à jour de la base de données ?",
+      "reponse": "Le principe du zero-downtime est d’éviter toute coupure pendant la mise en ligne d’une nouvelle version. Pour cela, on peut : 1) Préparer la nouvelle version sur un autre serveur ou un autre conteneur (Blue-Green Deployment). 2) Tester cette version, puis rediriger le trafic vers elle une fois validée. 3) Garder l’ancienne version en secours en cas de problème. 4) Appliquer les mises à jour de la base de données de manière compatible avec l’ancienne version (ajouter avant de supprimer, par exemple). 5) Surveiller l’application après le déploiement avec des outils de logs ou de monitoring pour détecter d’éventuelles erreurs."
+    },
+    {
+      "id": "Q042",
+      "competence": "CP8",
+      "niveau": 1,
+      "question": "Comment peut-on mettre en ligne une application web sur un serveur ?",
+      "reponse": "Pour mettre en ligne une application web, il faut : 1) transférer les fichiers du site (HTML, CSS, JS, images) sur le serveur via FTP ou un dépôt Git. 2) Configurer le serveur web (Apache, Nginx) pour pointer vers le dossier du site. 3) Vérifier la connexion à la base de données si le site en utilise une. 4) Tester l’accès depuis un navigateur via l’adresse du domaine. Cela permet à tout le monde d’accéder au site depuis Internet."
+    },
+    {
+      "id": "Q043",
+      "competence": "CP8",
+      "niveau": 2,
+      "question": "Quelles bonnes pratiques appliquer pour déployer une application web en production ?",
+      "reponse": "1) Toujours tester en local avant de mettre en ligne. 2) Avoir un fichier de configuration séparé pour la base de données de production. 3) Sauvegarder la base avant chaque mise à jour. 4) Utiliser Git pour versionner le code et faciliter les mises à jour. 5) Mettre les fichiers sensibles (.env, mots de passe) hors du dossier public. 6) Vérifier les droits d’accès et la sécurité du serveur. 7) Surveiller les logs pour détecter les erreurs après déploiement."
+    },
+    {
+      "id": "Q044",
+      "competence": "CT1",
+      "niveau": 1,
+      "question": "Pourquoi la communication en anglais est-elle importante pour un développeur web ?",
+      "reponse": "L'anglais est essentiel car : 1) Documentation technique majoritairement en anglais. 2) Communautés de développeurs internationales (Stack Overflow, GitHub). 3) Frameworks et librairies documentés en anglais. 4) Collaboration avec des équipes internationales. 5) Veille technologique (articles, conférences). 6) Opportunités professionnelles élargies. Niveau requis : B1 pour lecture/écriture/compréhension, A2 pour expression orale."
+    },
+    {
+      "id": "Q045",
+      "competence": "CT1",
+      "niveau": 2,
+      "question": "Comment présenteriez-vous un projet technique à un client non-technique lors d'une réunion ?",
+      "reponse": "1) Éviter le jargon technique, utiliser des analogies. 2) Se concentrer sur les bénéfices business, pas les détails techniques. 3) Utiliser des visuels : maquettes, démos, schémas simples. 4) Structure : contexte, objectifs, solution proposée, bénéfices, prochaines étapes. 5) Anticiper les questions. 6) Écouter activement, reformuler pour vérifier la compréhension. 7) Adapter le niveau de détail selon les réactions. 8) Préparer un support visuel clair (slides). 9) Prévoir une démo live si possible. 10) Conclure avec des actions concrètes et un planning."
+    },
+    {
+      "id": "Q046",
+      "competence": "CT1",
+      "niveau": 3,
+      "question": "Comment géreriez-vous une situation où un client demande une fonctionnalité techniquement complexe avec un délai irréaliste ?",
+      "reponse": "1) Écouter et comprendre le besoin réel derrière la demande. 2) Expliquer les contraintes techniques de manière accessible (analogies). 3) Proposer des alternatives : MVP avec fonctionnalités essentielles, approche itérative, solution technique différente. 4) Chiffrer précisément : temps nécessaire, ressources, risques. 5) Prioriser : identifier le must-have vs nice-to-have. 6) Négocier : soit plus de temps, soit scope réduit, soit plus de ressources. 7) Documenter les décisions et impacts. 8) Impliquer le chef de projet/manager si nécessaire. 9) Proposer un planning réaliste avec jalons. 10) Maintenir une communication transparente et régulière."
+    },
+    {
+      "id": "Q047",
+      "competence": "CT2",
+      "niveau": 1,
+      "question": "Qu'est-ce qu'une démarche structurée de résolution de problème en développement ?",
+      "reponse": "Méthode systématique : 1) Identifier et comprendre le problème (symptômes, contexte). 2) Reproduire le bug de manière fiable. 3) Isoler la cause : diviser pour régner, tester des hypothèses. 4) Analyser le code et les logs. 5) Proposer une solution. 6) Tester la solution. 7) Vérifier qu'il n'y a pas de régression. 8) Documenter la cause et la solution. 9) Déployer le correctif. Outils : débogueur, logs, tests unitaires, git bisect."
+    },
+    {
+      "id": "Q048",
+      "competence": "CT2",
+      "niveau": 2,
+      "question": "Une application web est lente en production mais pas en développement. Comment diagnostiqueriez-vous le problème ?",
+      "reponse": "1) Mesurer : identifier où est la lenteur (frontend, backend, DB, réseau). 2) Outils : Chrome DevTools (Network, Performance), APM (New Relic, Datadog), logs serveur. 3) Hypothèses : volume de données plus important, requêtes DB non optimisées, cache désactivé, ressources réseau, serveur sous-dimensionné. 4) Tests : reproduire avec données de prod, profiler les requêtes SQL (EXPLAIN), vérifier les index, analyser les requêtes réseau. 5) Solutions possibles : optimiser les requêtes, ajouter des index, mettre en cache, CDN pour les assets, lazy loading, pagination. 6) Monitorer après correction. 7) Load testing pour valider."
+    },
+    {
+      "id": "Q049",
+      "competence": "CT2",
+      "niveau": 3,
+      "question": "Votre application en ligne rencontre des erreurs aléatoires que vous n’arrivez pas à reproduire. Quelle méthode utiliseriez-vous pour identifier la cause du problème ?",
+      "reponse": "1) Observer les symptômes : noter quand et dans quelles conditions les erreurs apparaissent. 2) Consulter les journaux (logs) du serveur et du navigateur pour repérer les messages d’erreur. 3) Vérifier les mises à jour récentes (code, base de données, hébergeur). 4) Reproduire le problème sur un environnement de test avec les mêmes données si possible. 5) Ajouter des console.log ou des traces dans le code pour mieux comprendre où ça bloque. 6) Tester chaque partie du code séparément (isolation). 7) Surveiller les ressources du serveur (mémoire, espace disque, connexions). 8) Une fois la cause trouvée, corriger et retester, puis documenter la solution pour éviter que le problème ne revienne."
+    },
+    {
+      "id": "Q050",
+      "competence": "CT3",
+      "niveau": 1,
+      "question": "Qu'est-ce que la veille technologique et pourquoi est-elle importante pour un développeur ?",
+      "reponse": "La veille technologique consiste à se tenir informé des évolutions techniques, nouveaux outils, frameworks, bonnes pratiques et vulnérabilités de sécurité. Importance : 1) Rester compétitif sur le marché. 2) Utiliser les meilleures solutions. 3) Anticiper les obsolescences. 4) Améliorer la qualité du code. 5) Sécurité : connaître les failles. Sources : blogs techniques, newsletters, conférences, GitHub trending, Twitter, podcasts, documentation officielle."
+    },
+    {
+      "id": "Q051",
+      "competence": "CT3",
+      "niveau": 2,
+      "question": "Comment organiseriez-vous votre veille technologique de manière efficace sans y passer trop de temps ?",
+      "reponse": "1) Définir des thématiques prioritaires (langages utilisés, frameworks, sécurité). 2) Sources fiables : newsletters (JavaScript Weekly, Node Weekly), agrégateurs (dev.to, Medium), podcasts (pendant trajets). 3) Outils : Feedly pour RSS, Pocket pour lecture différée, Twitter lists. 4) Routine : 30min/jour ou 2h/semaine dédiées. 5) Pratique : side projects pour tester nouvelles technos. 6) Communauté : meetups, conférences, discussions avec collègues. 7) Documentation : noter les découvertes intéressantes. 8) Partage : présenter à l'équipe (knowledge sharing). 9) Filtrer : se concentrer sur l'applicable, pas les hypes."
+    },
+    {
+      "id": "Q052",
+      "competence": "CT3",
+      "niveau": 3,
+      "question": "Comment vous formeriez-vous rapidement à une nouvelle technologie que vous devez utiliser dans un projet urgent ?",
+      "reponse": "1) Objectif clair : identifier ce que je dois savoir faire précisément. 2) Documentation officielle : quick start, concepts clés. 3) Tutoriels pratiques : construire un petit projet similaire au besoin. 4) Code examples : GitHub, CodeSandbox, exemples officiels. 5) Vidéos : YouTube, cours Udemy/Pluralsight (vitesse x1.5). 6) Communauté : Stack Overflow, Discord/Slack de la techno, poser des questions. 7) Best practices : lire des articles de référence, awesome lists. 8) Pair programming : travailler avec quelqu'un qui connaît. 9) Itératif : commencer simple, complexifier progressivement. 10) Documentation : noter les pièges et solutions. 11) Code review : faire valider par un expert. Temps : 2-3 jours intensifs pour être opérationnel."
+    },
+    {
+      "id": "Q053",
+      "competence": "CP5",
+      "niveau": 1,
+      "question": "Qu'est-ce qu'une base de données relationnelle ?",
+      "reponse": "Une base de données qui organise les données en tables liées entre elles par des relations (clés primaires/étrangères)."
+    }
+  ]
+}
