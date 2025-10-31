@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test CORS - DWWM Reviz</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Test CORS - DWWM Reviz</h1>
+    
+    <div class="info test">
+        <strong>Frontend URL:</strong> <span id="frontend-url"></span><br>
+        <strong>Backend URL:</strong> <span id="backend-url"></span>
+    </div>
+
+    <button onclick="testHealth()">Test Health Endpoint</button>
+    <button onclick="testLogin()">Test Login Endpoint</button>
+    <button onclick="testCorsOptions()">Test CORS Preflight</button>
+    <button onclick="clearResults()">Clear Results</button>
+
+    <div id="results"></div>
+
+    <script src="js/api-config.js"></script>
+    <script>
+        // Afficher les URLs
+        document.getElementById('frontend-url').textContent = window.location.origin;
+        document.getElementById('backend-url').textContent = window.API_BASE_URL;
+
+        function addResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test ${type}`;
+            div.innerHTML = message;
+            document.getElementById('results').appendChild(div);
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+
+        async function testHealth() {
+            addResult('🔄 Test du endpoint /health...', 'info');
+            
+            try {
+                const response = await fetch(`${window.API_BASE_URL}/health`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult(`✅ Health OK: <pre>${JSON.stringify(data, null, 2)}</pre>`, 'success');
+                } else {
+                    addResult(`❌ Health Error: ${response.status} ${response.statusText}`, 'error');
+                }
+            } catch (error) {
+                addResult(`❌ Health Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testLogin() {
+            addResult('🔄 Test du endpoint /api/auth/login...', 'info');
+            
+            try {
+                const response = await fetch(`${window.API_BASE_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: 'test@test.com',
+                        password: 'wrongpassword'
+                    })
+                });
+
+                if (response.status === 401) {
+                    addResult('✅ Login endpoint accessible (401 attendu pour mauvais credentials)', 'success');
+                } else {
+                    const data = await response.text();
+                    addResult(`ℹ️ Login response: ${response.status} - ${data}`, 'info');
+                }
+            } catch (error) {
+                addResult(`❌ Login Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testCorsOptions() {
+            addResult('🔄 Test CORS preflight (OPTIONS)...', 'info');
+            
+            try {
+                const response = await fetch(`${window.API_BASE_URL}/api/auth/login`, {
+                    method: 'OPTIONS',
+                    headers: {
+                        'Origin': window.location.origin,
+                        'Access-Control-Request-Method': 'POST',
+                        'Access-Control-Request-Headers': 'Content-Type'
+                    }
+                });
+
+                addResult(`✅ CORS Preflight: ${response.status}`, 'success');
+                
+                // Afficher les headers CORS
+                const corsHeaders = {};
+                response.headers.forEach((value, key) => {
+                    if (key.toLowerCase().includes('access-control')) {
+                        corsHeaders[key] = value;
+                    }
+                });
+                
+                if (Object.keys(corsHeaders).length > 0) {
+                    addResult(`📋 CORS Headers: <pre>${JSON.stringify(corsHeaders, null, 2)}</pre>`, 'info');
+                } else {
+                    addResult('⚠️ Aucun header CORS trouvé', 'error');
+                }
+                
+            } catch (error) {
+                addResult(`❌ CORS Preflight Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Test automatique au chargement
+        window.addEventListener('load', () => {
+            addResult('🚀 Page chargée, prêt pour les tests', 'info');
+        });
+    </script>
+</body>
+</html>
