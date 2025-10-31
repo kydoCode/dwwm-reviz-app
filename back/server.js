@@ -45,27 +45,22 @@ app.use(helmet({
     crossOriginEmbedderPolicy: false
 }));
 
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    message: 'Trop de requêtes, réessayez plus tard',
-    keyGenerator: (req) => {
-        return req.ip || req.connection.remoteAddress || 'unknown';
-    },
-    skip: (req) => process.env.NODE_ENV === 'production' // Désactiver en prod pour éviter les erreurs Vercel
-});
-app.use('/api/', limiter);
+// Rate limiting désactivé en production (incompatible avec Vercel)
+if (process.env.NODE_ENV !== 'production') {
+    const limiter = rateLimit({
+        windowMs: 15 * 60 * 1000,
+        max: 100,
+        message: 'Trop de requêtes, réessayez plus tard'
+    });
+    app.use('/api/', limiter);
 
-const authLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 5,
-    message: 'Trop de tentatives de connexion',
-    keyGenerator: (req) => {
-        return req.ip || req.connection.remoteAddress || 'unknown';
-    },
-    skip: (req) => process.env.NODE_ENV === 'production' // Désactiver en prod pour éviter les erreurs Vercel
-});
-app.use('/api/auth/login', authLimiter);
+    const authLimiter = rateLimit({
+        windowMs: 15 * 60 * 1000,
+        max: 5,
+        message: 'Trop de tentatives de connexion'
+    });
+    app.use('/api/auth/login', authLimiter);
+}
 
 
 
