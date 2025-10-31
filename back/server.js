@@ -20,7 +20,8 @@ app.use((req, res, next) => {
     
     // Autoriser les origines spécifiques
     if (origin && (
-        origin.includes('dwwm-reviz-app-frontend.vercel.app') ||
+        origin.includes('dwwm-reviz-app-frontend') ||
+        origin.includes('vercel.app') ||
         origin.includes('localhost') ||
         origin.includes('127.0.0.1')
     )) {
