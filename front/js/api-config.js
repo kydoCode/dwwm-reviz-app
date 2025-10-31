@@ -1,7 +1,9 @@
 // Configuration de l'API selon l'environnement
 const API_CONFIG = {
     // URL de production Vercel
-    PRODUCTION_URL: 'https://dwwm-reviz-app-backend.vercel.app',
+    // PRODUCTION_URL: 'https://dwwm-reviz-app-backend.vercel.app',
+    // PRODUCTION_URL: 'https://dwwm-reviz-app-backend-[hash].vercel.app',
+    PRODUCTION_URL: 'https://dwwm-reviz-app-backend-ejmbknxe1-kydokody-gmailcoms-projects.vercel.app',
     DEVELOPMENT_URL: 'http://localhost:3000',
     
     // Détection automatique de l'environnement
